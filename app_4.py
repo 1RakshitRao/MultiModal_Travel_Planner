@@ -23,8 +23,10 @@ OPENAI_API_KEY = os.getenv('OPENAI_API_KEY')
 # GOOGLE_MAPS_API_KEY = os.getenv('GOOGLE_MAPS_API_KEY')
 
 # Validate required environment variables
+# if not all([RAPIDAPI_KEY, OPENAI_API_KEY, RAPIDAPI_HOST]):
+#     raise ValueError("Missing required API keys in environment variables. Please check your .env file.")
 if not all([RAPIDAPI_KEY, OPENAI_API_KEY, RAPIDAPI_HOST]):
-    raise ValueError("Missing required API keys in environment variables. Please check your .env file.")
+    print("WARNING: Missing API keys. App will fail on request.")
 
 # Initialize OpenAI client
 client = OpenAI(api_key=OPENAI_API_KEY)
